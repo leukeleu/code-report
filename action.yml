@@ -1,0 +1,32 @@
+name: Code Report
+description: Reports code quality metrics
+inputs:
+  filename:
+    description: 'Name of the file to upload'
+    required: true
+    default: 'code-report.yml'
+    type: string
+
+  artifact:
+    description: 'Name of the artifact to upload'
+    required: true
+    default: 'code-report'
+    type: string
+runs:
+  using: composite
+  steps:
+    - name: Check whether coverage executable is available
+      run: which coverage &> /dev/null && echo "HAS_COVERAGE_PY=true" >> "$GITHUB_ENV" || echo "HAS_COVERAGE_PY=false" >> "$GITHUB_ENV"
+      shell: bash
+
+    - name: Collect coverage.py data
+      if: env.HAS_COVERAGE_PY == 'true'
+      run: |
+        echo "python-coverage: $(coverage report --format=totals)" >> $GITHUB_WORKSPACE/${{ inputs.filename }}
+      shell: bash
+
+    - name: Upload code report
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.artifact }}
+        path: ${{ github.workspace }}/${{ inputs.filename }}
