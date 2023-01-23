@@ -22,7 +22,7 @@ runs:
     - name: Collect coverage.py data
       if: env.HAS_COVERAGE_PY == 'true'
       run: |
-        echo "python-coverage: $(coverage report --format=totals)" >> $GITHUB_WORKSPACE/${{ inputs.filename }}
+        echo "python-coverage: $(coverage report --format=total)" >> $GITHUB_WORKSPACE/${{ inputs.filename }}
       shell: bash
 
     - name: Upload code report
