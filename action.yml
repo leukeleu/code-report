@@ -2,16 +2,16 @@ name: Code Report
 author: Leukeleu B.V.
 description: Reports code quality metrics
 inputs:
-  filename:
-    description: 'Name of the file to upload'
-    required: false
-    default: 'code-report.yml'
-    type: string
-
   artifact:
     description: 'Name of the artifact to upload'
     required: false
     default: 'code-report'
+    type: string
+
+  filename:
+    description: 'Name of the file to upload'
+    required: false
+    default: 'code-report.yml'
     type: string
 runs:
   using: composite
