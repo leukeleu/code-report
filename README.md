@@ -28,7 +28,7 @@ jobs:
 
 ## Inputs
 
-### `artifact-name`
+### `artifact`
 
 The name of the artifact to upload. Default `"code-report"`.
 
