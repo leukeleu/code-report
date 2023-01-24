@@ -3,13 +3,13 @@ description: Reports code quality metrics
 inputs:
   filename:
     description: 'Name of the file to upload'
-    required: true
+    required: false
     default: 'code-report.yml'
     type: string
 
   artifact:
     description: 'Name of the artifact to upload'
-    required: true
+    required: false
     default: 'code-report'
     type: string
 runs:
